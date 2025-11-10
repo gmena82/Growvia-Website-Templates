@@ -1,16 +1,24 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { FluxGradient } from '@/components/flux-gradient';
+import { VideoBackground } from '@/components/video-background';
 
 /**
- * Hero - Full-height hero section with FluxGradient background
- * Matches Mirage studio hero structure
+ * Hero - Full-height hero section with video background
+ * Matches Mirage studio hero structure with looping video
  */
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
-      <FluxGradient animate />
+      {/* Video Background - Desktop only, image fallback for mobile */}
+      <VideoBackground
+        sources={{
+          mp4: '/videos/hero-gradient.mp4',
+          webm: '/videos/hero-gradient.webm',
+        }}
+        fallbackImage="/images/hero-fallback.jpg"
+        fallbackAlt="Tenchi Flux Studios - AI Cinema"
+        className="absolute inset-0 -z-10"
+      />
 
       {/* Content */}
       <div className="relative z-10 container-custom text-center">
